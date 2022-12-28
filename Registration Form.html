@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="Style.css">
+</head>
+<body>
+	<h1 id="h1">Student Enrollment Form</h1>
+	<!-- <form id="f1"> -->
+	<div id="form">
+		<p class="text">Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" name="" class="namebox" id="fName" placeholder="First name" autofocus="on" required/>
+		<input type="text" name="" class="namebox" id="lName" placeholder="Last name"/>
+		</p>
+		<br/>
+		<p class="text">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" name="" class="inputbox" id="email" placeholder="Your email id"/>
+		</p>
+		<br/>
+		<p class="text">Website: &nbsp;&nbsp;&nbsp;
+		<input type="text" name="" class="inputbox" id="web" placeholder="Domain name"/>
+		</p>
+		<br/>
+		<p class="text">Image link: 
+		<input type="text" name="" class="inputbox" id="image" value="" placeholder="Link of your image"/>
+		</p>
+		<br/>
+		<p class="text">Gender: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="m" class="radio">
+				<input type="radio" id="m" name="Gender" value="Male">&nbsp;Male
+			</label>
+			<label for="f" class="radio">
+				<input type="radio" id="f" name="Gender" value="Female">&nbsp;Female
+			</label>
+			<label for="o" class="radio">
+				<input type="radio" id="o" name="Gender" value="Other">&nbsp;Other
+			</label>
+		</p>
+			<br/>
+		<p class="text">Skills : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="HTML" class="chk">
+				<input type="checkbox" id="HTML" class="Skills" name="Skills" value="HTML">&nbsp;HTML
+			</label>
+			<label for="CSS" class="chk">
+				<input type="checkbox" id="CSS" class="Skills" name="Skills" value="CSS">&nbsp;CSS
+			</label>
+			<label for="JS" class="chk">
+				<input type="checkbox" id="JS" class="Skills" name="Skills" value="JavaScript">&nbsp;JavaScript
+			</label>
+		</p>
+			<br/>
+		<button id="enroll" onclick="enroll()">Enroll Student</button>
+		<button id="clear" onclick="clr()">Clear</button>
+
+		<p id="msg" hidden>Some or the other parameter is missing! Please try to fill it all.</p>
+	</div>
+	<!-- </form> -->
+
+	<div id="border" style="height:550;"></div>
+
+	<!-- <form id="f2"> -->
+	<div class="rightInfoStore" hidden>
+		<p id="infohead">Enrolled Student/s</p>
+		<div id="heading">
+			<samp class="head" id="dechead">Description</samp>
+			<samp class="head" id="imghead">Image</samp>
+		</div>
+		<br/>
+		<div class="container" id="container">
+
+			<!-- all the items and cards wwill get inserted inside this div -->
+
+		</div>
+	</div>
+	<!-- </form> -->
+
+	<script type="text/javascript">
+		let clr = ()=>{
+			document.getElementById("fName").value = "";
+			document.getElementById("lName").value = "";
+			document.getElementById("email").value = "";
+			document.getElementById("web").value = "";
+			document.getElementById("image").value = "";
+			document.getElementById("m").checked = false;
+			document.getElementById("f").checked = false;
+			document.getElementById("o").checked = false;
+			document.getElementById("HTML").checked = false;
+			document.getElementById("CSS").checked = false;
+			document.getElementById("JS").checked = false;
+		}
+
+		let i = 0;
+		let enroll = () =>{
+
+			let fName = document.getElementById("fName").value;
+			let lName = document.getElementById("lName").value;
+			let email = document.getElementById("email").value;
+			let web = document.getElementById("web").value;
+			let image = document.getElementById("image").value;
+
+			//getting value of a checked radio button
+			let gender = document.querySelector('input[name="Gender"]:checked').value;
+		
+
+			//getting value of a checked checkbox
+			let skills = "";
+			let skill = document.querySelectorAll('input[name="Skills"]:checked');
+	
+			for (j=0; j < skill.length; j++){
+				if (j==0){
+					skills = skills + skill[j].value;
+				}
+				else{
+					skills = skills + ",  " + skill[j].value;
+				}
+			}
+
+			let html = `<div class="card">
+							<div class="studentDetails">
+								<div class="stdName">${fName} ${lName}</div>
+								<div class="stdEmail">${email}</div>
+								<div class="stdWeb">${web}</div>
+								<div class="stdGender">${gender}</div>
+								<div class="stdSkills">${skills}</div>
+							</div>
+							<div class="studentPhoto">
+								<div id="remove">
+									<button class="removeCard" id="removeCard-${i}">X</button>
+								</div>
+								<img src=${image} alt="Student Photo" class="img" height="70" width="70">
+							</div>
+						</div>`;
+
+			let newhtml = `<br/><br/><br/><br/>
+						<div class="card">
+							<div class="studentDetails">
+								<div class="stdName">${fName} ${lName}</div>
+								<div class="stdEmail">${email}</div>
+								<div class="stdWeb">${web}</div>
+								<div class="stdGender">${gender}</div>
+								<div class="stdSkills">${skills}</div>
+							</div>
+							<div class="studentPhoto">
+								<div id="remove">
+									<button class="removeCard" id="removeCard-${i}">X</button>
+								</div>
+								<img src=${image} alt="Student Photo" class="img" height="70" width="70">
+							</div>
+						</div>`;
+
+			//it is not needed to declair "container" and "msg" (the below 2 lines of codes), "container" and "msg" can be used "msg.hidden or container.insertAdjecentHTML, etc." as those are ids
+			let container = document.getElementById("container");
+			let msg = document.querySelector("#msg");
+
+			if (fName == "" || lName == "" || email == "" || web == "" || image == "" || gender == "" || skills == ""){
+				msg.hidden = false;
+			}
+			else{
+				msg.hidden = true;
+				document.querySelector(".rightInfoStore").hidden = false;
+
+				if (i==0){
+					container.insertAdjacentHTML("beforeend", html);
+				}
+				else{
+					container.insertAdjacentHTML("beforeend", newhtml);
+				}
+			}
+
+			clr();
+
+			document.querySelector("#removeCard-" + i)
+			.addEventListener('click', function(){
+				// let confirm = confirm("Do you really want to delete this student data?")
+				// console.log(this)
+				let removeE1 = this.parentNode.parentNode.parentNode;
+				console.log(removeE1);
+				// if (confirm)
+				container.removeChild(removeE1);
+			})
+
+			i++;
+		}
+
+		let del = (value) =>{
+			let l = value.length-3;
+			let sData = document.getElementsByClassName("container")[l];
+			if (sData.hasChildNodes()) {
+				sData.removeChild(sData.children[l]);
+				if (l == 0){
+					document.querySelector(".rightInfoStore").hidden = true;
+				}
+			}
+  		}
+	</script>
+</body>
+</html>

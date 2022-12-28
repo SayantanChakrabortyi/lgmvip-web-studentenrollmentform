@@ -1,0 +1,150 @@
+*{
+	background-color: ghostwhite;
+	margin: 0;
+	padding: 0;
+}
+h1{
+	text-align: center;
+	color: green;
+	font-size: 350%;
+	margin-top: 1%;
+	margin-bottom: 5%;
+}
+#form{
+	margin-top: 10%;
+}
+.text{
+	font-size: 18px;
+	margin-left: 3%;
+}
+.namebox{
+	width: 17%;
+	height: 20px;
+	margin: 5px;
+	border: none;
+	border-bottom: solid black;
+}
+.inputbox{
+	width: 35%;
+	height: 20px;
+	margin: 5px;
+	border: none;
+	border-bottom: solid black;
+}
+.radio, .chk{
+/*	width: 35%;*/
+	height: 20px;
+	margin-right: 50px;
+	cursor: pointer;
+}
+.r, .cb{
+	cursor: pointer;
+}
+#enroll, #clear{
+	font-size: 18px;
+	color: white;
+	width: 20%;
+	height: 40px;
+	cursor: pointer;
+	border-radius: 10px;
+	margin-left: 2.25%;
+	margin-top: 30px;
+}
+#enroll{background-color: green;}
+#clear{background-color: red;}
+#msg{
+	font-size: 100%;
+	color: red;
+	margin-top: 50px;
+	margin-left: 11%;	
+}
+#border{
+	border-left: 5px double green;
+	width: 0px;
+	height: 550px;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+	margin-top: -450px;
+}
+.rightInfoStore{
+	margin-top: -570px;
+	margin-left: 50%;
+	margin-right: 0;
+}
+#infohead{
+	color: green;
+	margin-bottom: 40px;
+	margin-left: 32%;
+	font-size: 200%;
+}
+#heading{
+	margin: auto;
+	background-color: transparent;
+	font-size: 150%;
+	width: 80%;
+	height: 50px;
+	display : flex;
+    flex-direction : row;
+    margin-bottom: -1%;
+}
+#dechead{
+	color: white;
+	background-color: green;
+	width: 50%;
+	height: 40px;
+	text-align: center;
+	padding-top: 2%;
+	border: 2px solid grey;
+}
+#imghead{
+	color: white;
+	background-color: green;
+	width: 50%;
+	height: 40px;
+	text-align: center;
+	padding-top: 2%;
+	border: 2px solid grey;
+}
+.card{
+	margin: auto;
+	background-color: transparent;
+	width: 80%;
+	height: 100px;
+	display : flex;
+    flex-direction : row;
+}
+.studentDetails{
+	color: back;
+	background-color: transparent;
+	width: 48%;
+	height: 138px;
+	font-size: 120%;
+	text-align: justify;
+	padding-top: 4%;
+	padding-left: 2%;
+	border: 2px solid grey;
+}
+.studentPhoto{
+	width: 50%;
+	height: 150px;
+	text-align: center;
+	padding-top: 2%;
+	border: 2px solid grey;
+}
+.img{
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	margin-top: -6%;
+}
+#remove{
+	text-align: right;
+	margin-top: -2%;
+	margin-right: 7%;
+}
+.removeCard{
+	color: red;
+	border-style: none;
+	cursor: pointer;
+}
